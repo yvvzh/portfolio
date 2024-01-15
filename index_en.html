@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="script.js"></script>
     <title>Emile Joly - PortFolio</title>
 </head>
 <body>
     <div class="navbar">
-        <div class="navbar-item link">
+        <div class="navbar-item link lang-selection">
             <a href="/index.html">Français<br><span id="selected-lang">>English</span></a>
         </div>
         <div class="navbar-item link">
@@ -32,7 +33,21 @@
                 Projects
             </a>
         </div>
+        <div class="navbar-menu">
+            <div class="container" onclick="iconTransformation(this); displayMenu()">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+        </div>
     </div> <!--navbar-->
+    <div id="hiddenMenu" style="display: none;">
+        <ul>
+            <a href="https://github.com/yvvzh" target="_blank"><li>GitHub</li></a>
+            <a href="https://www.linkedin.com/in/emile-joly-0a8215270/" target="_blank"><li>LinkedIn</li></a>
+            <a href="#"><li>Projects</li></a>
+        </ul>
+    </div>
     <div class="title-section">
         <h1>Versatile developer in the making</h1>
         <h2>I love functional simplicity, and converting it into user experience.</h2>
