@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500&display=swap');
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: rgb(37, 37, 37);
+    color: rgb(234, 234, 234);
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 40px;
+    width: 100%;
+    height: fit-content;
+}
+
+.addtask {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    width: 50%;
+    margin-bottom: 30px;
+}
+
+input {
+    height: 20px;
+    width: 230px;
+    border-style: none;
+    border-bottom: 1px solid rgb(234, 234, 234);
+    background-color: transparent;
+    color: rgb(234, 234, 234);
+}
+
+ul {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    height: fit-content;
+    margin: 10px 0 0 0;
+}
+
+li {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 40px;
+    height: fit-content;
+    align-items: center;
+    margin-top: 20px;
+}
+
+p {
+    margin: 0;
+}
+
+.bx {
+    font-size: 26px;
+}
+
+.bx:hover {
+    cursor: pointer;
+    color: rgb(182, 164, 198);
+}
+
+.delete {
+    padding-left: auto;
+}
+
+.lineThrough {
+    text-decoration: line-through;
+}
