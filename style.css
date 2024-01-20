@@ -3,7 +3,7 @@
 * {
     font-family: 'Inter', sans-serif;
     margin: 0;
-    background-color: #fff1d4;
+    background-color: #fff9ef;
 }
 
 #selected-lang {
@@ -53,7 +53,7 @@
 #hiddenMenu a {
     text-decoration: none;
     background-color: transparent;
-    color: #fff1d4;
+    color: #fff9ef;
     font-size: 16px;
     font-weight: 600;
 }
