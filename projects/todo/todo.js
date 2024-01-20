@@ -1,94 +1,121 @@
 const tasks = document.getElementById("tasks");
-const input = document.getElementById("input")
+const taskInput = document.getElementById("taskInput")
 
-const CHECK = "bxs-circle";
-const UNCHECK = "bx-circle";
-const LINE_THROUGH = "lineThrough";
+const check = "bxs-circle";
+const uncheck = "bx-circle";
+const line_through = "lineThrough";
 
-let LIST, id;
+let list;
 
 let data = localStorage.getItem("TODO");
 
 if (data) {
-    LIST = JSON.parse(data);
-    id = LIST.length;
-    loadList(LIST);
+    list = JSON.parse(data);
+    loadList(list);
 } else {
-    LIST = [];
-    id = 0;
+    list = [];
 }
+
+document.addEventListener('click',function(event){
+    if (event.target.closest('.bx-reset') !== null) {
+        localStorage.clear();
+        this.location.reload();
+    }
+});
 
 function loadList(array){
     array.forEach(function(item){
-        addToDo(item.name, item.id, item.done, item.trash);
+        addToDo(item.name, item.status);
     });
 }
 
-function addToDo(toDo, id, done, trash){
-    if(trash){
-        return;
-    }
-    const DONE = done ? CHECK : UNCHECK;
-    const LINE = done ? LINE_THROUGH : "";
+function addToDo(toDo, status){
+    const done = status ? check : uncheck;
+    const line = status ? line_through : "";
 
     const text =  
     `<li class="item">
-        <i class="bx  ${DONE}  co" job="complete" id="${id}"></i> 
-        <p class="text ${LINE}"> ${toDo} </p>
-        <i class="bx bx-trash de" job="delete" id="${id}"></i>
+        <i class="bx  ${done}  co" job="complete" id="${toDo}"></i> 
+        <p class="text ${line}"> ${toDo} </p>
+        <i class="bx bx-trash de" job="delete" id="${toDo}"></i>
     </li>`;
 
     const position = "beforeend"
     tasks.insertAdjacentHTML(position, text);
+    taskInput.value ="";
 };
 
-document.addEventListener("keyup", (e) => {
-    if (e.key == "Enter"){
-        const toDo = input.value; 
-        if (toDo){ 
-            addToDo(toDo, id, false, false);
-            LIST.push({
-                    name: toDo,
-                    id: id,
-                    done: false,
-                    trash: false
-            });
-            localStorage.setItem("TODO", JSON.stringify(LIST));
-            id++;
+function pushList(toDo) {
+    list.push({
+        name: toDo,
+        status: false
+    });
+    localStorage.setItem("TODO", JSON.stringify(list));
+}
+
+function duplicaatChecker(toDo) {
+    let i = 0;
+    console.log(toDo);
+    list.forEach(element => {
+        if (element.name == toDo.trim()) {
+            i++;
         }
-        input.value ="";
+    });
+    return i === 0 ? true : false;
+}
+
+document.addEventListener("keyup", (e) => {
+    if (e.key == "Enter" && taskInput.value.trim() !== ""){
+        const toDo = taskInput.value.trim(); 
+        if (duplicaatChecker(toDo)) { 
+            addToDo(toDo, false);
+            pushList(toDo);
+        }
+        else {
+            alert("Veuillez entrer une nouvelle tâche!");
+        }
     }
 });
 
 document.addEventListener('click',function(event){
-    if (event.target.closest('.bx-add-to-queue') !== null) {
-        const toDo = input.value; 
-        if (toDo){ 
-            addToDo(toDo, id, false, false);
-            LIST.push({
-                    name: toDo,
-                    id: id,
-                    done: false,
-                    trash: false
-            });
-            localStorage.setItem("TODO", JSON.stringify(LIST));
-            id++;
+    if (event.target.closest('.bx-add-to-queue') !== null && taskInput.value.trim() !== "") {
+        const toDo = taskInput.value; 
+        if (duplicaatChecker(toDo)) { 
+            addToDo(toDo, false);
+            pushList(toDo);
         }
-        input.value ="";
+        else {
+            alert("Veuillez entrer une nouvelle tâche!");
+        }
     }
 });
 
 function completeToDo(element){
-    element.classList.toggle(CHECK);
-    element.classList.toggle(UNCHECK);
-    element.parentNode.querySelector(".text").classList.toggle(LINE_THROUGH);
-
-    LIST[element.id].done = LIST[element.id].done ? false : true;
+    element.classList.toggle(check);
+    element.classList.toggle(uncheck);
+    element.parentNode.querySelector(".text").classList.toggle(line_through);
+    let i = 0;
+    let indexToRemove = 0;
+    list.forEach(item => {
+        if (element.id === item.name) {
+            indexToRemove = i;
+        }
+        i++;
+    });
+    list[indexToRemove].status = list[indexToRemove].status ? false : true;
 };
 
 function removeTodo(element){
     element.parentNode.parentNode.removeChild(element.parentNode);
-    LIST[element.id].trash = true;
+    let i = 0;
+    let indexToRemove = 0;
+    list.forEach(item => {
+        if (element.id === item.name) {
+            indexToRemove = i;
+        }
+        i++;
+    });
+    list.splice(indexToRemove, 1);
 };
 
 tasks.addEventListener("click", function(event){
@@ -96,8 +123,9 @@ tasks.addEventListener("click", function(event){
     const elementJob = element.attributes.job.value;
     if (elementJob == "complete"){
         completeToDo(element);
-    }else if(elementJob =="delete"){
+    }else if(elementJob == "delete"){
         removeTodo(element);
+        id = list.length;
     }
-    localStorage.setItem("TODO", JSON.stringify(LIST));
+    localStorage.setItem("TODO", JSON.stringify(list));
 });

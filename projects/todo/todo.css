@@ -13,9 +13,18 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 10px;
     width: 100%;
     height: fit-content;
+}
+
+.clear {
+    left: 0;
+    display: flex;
+}
+
+.clear p {
+    font-size: 6px;
 }
 
 .addtask {
