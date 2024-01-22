@@ -139,7 +139,6 @@ tasks.addEventListener("click", function(event){
         completeToDo(element);
     }else if(elementJob == "delete"){
         removeTodo(element);
-        id = list.length;
     }
     localStorage.setItem("TODO", JSON.stringify(list));
 });
