@@ -31,17 +31,32 @@ function loadList(array){
 
 function addToDo(toDo, status){
     const done = status ? check : uncheck;
-    const line = status ? line_through : "";
+    const line = status ? line_through : "not_line_through";
 
-    const text =  
-    `<li class="item">
-        <i class="bx  ${done}  co" job="complete" id="${toDo}"></i> 
-        <p class="text ${line}"> ${toDo} </p>
-        <i class="bx bx-trash de" job="delete" id="${toDo}"></i>
-    </li>`;
+    let tasksList = document.getElementById("tasks");
 
-    const position = "beforeend"
-    tasks.insertAdjacentHTML(position, text);
+    let newTask = document.createElement("li");
+    newTask.classList.add("item");
+
+    let doneBtn = document.createElement("i");
+    doneBtn.classList.add('bx', done, 'co');
+    doneBtn.setAttribute('job', 'complete');
+    doneBtn.setAttribute('id', toDo);
+
+    let text = document.createElement("p");
+    text.classList.add('text', line);
+    text.textContent = toDo;
+
+    let deleteBtn = document.createElement("i");
+    deleteBtn.classList.add('bx', 'bx-trash', 'de');
+    deleteBtn.setAttribute('job', 'delete');
+    deleteBtn.setAttribute('id', toDo);
+
+    newTask.appendChild(doneBtn);
+    newTask.appendChild(text);
+    newTask.appendChild(deleteBtn);
+    tasksList.appendChild(newTask);
+
     taskInput.value ="";
 };
 
@@ -55,7 +70,6 @@ function pushList(toDo) {
 
 function duplicaatChecker(toDo) {
     let i = 0;
-    console.log(toDo);
     list.forEach(element => {
         if (element.name == toDo.trim()) {
             i++;
