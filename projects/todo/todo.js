@@ -33,8 +33,6 @@ function addToDo(toDo, status){
     const done = status ? check : uncheck;
     const line = status ? line_through : "not_line_through";
 
-    let tasksList = document.getElementById("tasks");
-
     let newTask = document.createElement("li");
     newTask.classList.add("item");
 
@@ -55,7 +53,7 @@ function addToDo(toDo, status){
     newTask.appendChild(doneBtn);
     newTask.appendChild(text);
     newTask.appendChild(deleteBtn);
-    tasksList.appendChild(newTask);
+    tasks.appendChild(newTask);
 
     taskInput.value ="";
 };
