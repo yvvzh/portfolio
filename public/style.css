@@ -177,7 +177,7 @@
 }
 
 .skills-section .skills .skill-description {
-    height: 90px;
+    height: 70px;
     display: flex;
     text-align: center;
     align-items: center;
@@ -189,8 +189,10 @@
 }
 
 .skills-section .skills .skill-lang {
-    height: 130px;
+    height: 100px;
     display: flex;
+    flex-direction: column;
+    gap: 4px;
     justify-content: center;
     text-align: center;
     align-items: center;
@@ -200,14 +202,16 @@
 }
 
 .skills-section .skills .skill-lang span {
+    font-size: 16px;
     font-weight: 500;
     color: #454545;
 }
 
 .skills-section .skills .skill-tools {
-    height: 210px;
+    height: 270px;
     display: flex;
     flex-direction: column;
+    gap: 8px;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -218,6 +222,7 @@
 
 .skills-section .skills .skill-tools ul {
     list-style: none;
+    font-size: 16px;
     font-weight: 500;
     color: #454545;
     padding: 0;
