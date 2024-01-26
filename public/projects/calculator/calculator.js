@@ -1,15 +1,15 @@
-let display = document.getElementById('display');
+let display = document.getElementById("display");
 
 function appendToDisplay(value) {
     display.value += value;
 }
 
 function clearDisplay() {
-    display.value = '';
+    display.value = "";
 }
 
 function percentage() {
-    display.value = display.value/100;
+    display.value = display.value / 100;
 }
 
 function sign() {
@@ -20,6 +20,6 @@ function calculate() {
     try {
         display.value = eval(display.value);
     } catch (error) {
-        display.value = 'Error';
+        display.value = "Error";
     }
 }

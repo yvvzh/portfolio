@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tests - Firebase</title>
+    </head>
+    <body>
+        <h1>=============</h1>
+        <h2>Working...</h2>
+
+        <form class="add">
+            <label for="text">Texte:</label>
+            <input type="text" name="text" required />
+            <button>Ajouter une nouvelle tâche</button>
+        </form>
+        <form class="delete">
+            <label for="id">ID de la tâche que vous souhaitez supprimer</label>
+            <input type="text" name="id" required />
+            <button>Supprimer la tâche</button>
+        </form>
+        <form class="update">
+            <label for="id">ID de la tâche à modifier</label>
+            <input type="text" name="id" required />
+            <button>Modifier la tâche</button>
+        </form>
+        <script src="./firebase.js" type="module"></script>
+    </body>
+</html>

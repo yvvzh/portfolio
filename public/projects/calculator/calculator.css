@@ -55,7 +55,9 @@ button {
     background-color: orange;
 }
 
-.grey, .orange, .red {
+.grey,
+.orange,
+.red {
     font-weight: bold;
 }
 
