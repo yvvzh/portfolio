@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Emile's Weather App</title>
+        <link rel="stylesheet" href="weather.css" />
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="search-container">
+            <input id="input" type="text" placeholder="Nom de la ville..." />
+            <button id="search-btn"><i class="bx bx-search-alt-2"></i></button>
+        </div>
+        <div class="search-result"></div>
+        <div class="data-container">
+            <img id="background" src="./img/default_weather.jpg" />
+            <div id="city-display"></div>
+            <div id="temperature-display"></div>
+            <div id="wind-display"></div>
+        </div>
+        <script src="weather.js"></script>
+    </body>
+</html>
